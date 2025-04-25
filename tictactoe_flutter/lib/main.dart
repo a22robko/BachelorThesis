@@ -68,10 +68,6 @@ class _TicTacToeGameState extends State<TicTacToeGame> {
           actions: [
             TextButton(
                 onPressed: () {
-                  setState(() {
-                    game.resetGame();
-                    gameOver = false;
-                  });
                   Navigator.of(context).pop();
                 },
                 child: Text("Restart"))
