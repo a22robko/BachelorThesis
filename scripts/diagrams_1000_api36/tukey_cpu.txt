@@ -1,0 +1,4 @@
+group1	group2	meandiff	p-adj	lower	upper	reject
+Flutter	Kotlin + Jetpack Compose	-7.5180	0.0000	-8.2201	-6.8159	1.0000
+Flutter	Kotlin + XML View	-6.9841	0.0000	-7.6862	-6.2820	1.0000
+Kotlin + Jetpack Compose	Kotlin + XML View	0.5339	0.1754	-0.1682	1.2360	0.0000

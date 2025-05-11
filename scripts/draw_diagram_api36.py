@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 limit = 1000
-app = "tictactoe"
+app = "tetris"
 
 def read_trace_file(filename):
     cpu_usage = []
@@ -17,9 +17,9 @@ def read_trace_file(filename):
     return cpu_usage, ram_usage, battery_usage
 
 # Read data from three trace files
-cpu_flutter, ram_flutter, battery_flutter = read_trace_file(f"./data_{limit}/tacelog_{app}_flutter.txt")
-cpu_android, ram_android, battery_android = read_trace_file(f"./data_{limit}/tacelog_{app}_android.txt")
-cpu_compose, ram_compose, battery_compose = read_trace_file(f"./data_{limit}/tacelog_{app}_compose.txt")
+cpu_flutter, ram_flutter, battery_flutter = read_trace_file(f"./data_{limit}_api36/tacelog_{app}_flutter.txt")
+cpu_android, ram_android, battery_android = read_trace_file(f"./data_{limit}_api36/tacelog_{app}_android.txt")
+cpu_compose, ram_compose, battery_compose = read_trace_file(f"./data_{limit}_api36/tacelog_{app}_compose.txt")
 
 # Generate time steps (assuming one-second intervals)
 time_steps = np.arange(len(cpu_flutter))
@@ -42,7 +42,7 @@ plt.legend()
 plt.grid()
 
 # Save CPU usage plot
-plt.savefig(f"./diagrams_{limit}/{app}/cpu_overtime.png", dpi=600)
+plt.savefig(f"./diagrams_{limit}_api36/cpu_overtime.png", dpi=600)
 plt.close()
 
 # Create figure for RAM usage plot
@@ -63,7 +63,7 @@ plt.legend()
 plt.grid()
 
 # Save RAM usage plot
-plt.savefig(f"./diagrams_{limit}/{app}/ram_overtime.png", dpi=600)
+plt.savefig(f"./diagrams_{limit}_api36/ram_overtime.png", dpi=600)
 plt.close()
 
 # Create figure for battery consumption bar chart
@@ -83,7 +83,7 @@ plt.title('Battery Usage Comparison')
 plt.grid(axis='y')
 
 # Save battery consumption bar chart
-plt.savefig(f"./diagrams_{limit}/{app}/battery.png", dpi=600)
+plt.savefig(f"./diagrams_{limit}_api36/battery.png", dpi=600)
 plt.close()
 
 # Create figure for average CPU usage bar chart
@@ -102,7 +102,7 @@ plt.title('Average CPU Usage Comparison')
 plt.grid(axis='y')
 
 # Save average CPU usage bar chart
-plt.savefig(f"./diagrams_{limit}/{app}/cpu_avg.png", dpi=600)
+plt.savefig(f"./diagrams_{limit}_api36/cpu_avg.png", dpi=600)
 plt.close()
 
 # Create figure for average RAM usage bar chart
@@ -121,7 +121,7 @@ plt.title('Average RAM Usage Comparison')
 plt.grid(axis='y')
 
 # Save average RAM usage bar chart
-plt.savefig(f"./diagrams_{limit}/{app}/ram_avg.png", dpi=600)
+plt.savefig(f"./diagrams_{limit}_api36/ram_avg.png", dpi=600)
 plt.close()
 
 # Create figure for CPU usage box plot
@@ -144,7 +144,7 @@ plt.title('CPU Usage Distribution (Box Plot)')
 plt.grid()
 
 # Save CPU usage box plot
-plt.savefig(f"./diagrams_{limit}/{app}/cpu_box.png", dpi=600)
+plt.savefig(f"./diagrams_{limit}_api36/cpu_box.png", dpi=600)
 plt.close()
 
 # Create figure for RAM usage box plot
@@ -164,5 +164,5 @@ plt.title('RAM Usage Distribution (Box Plot)')
 plt.grid()
 
 # Save RAM usage box plot
-plt.savefig(f"./diagrams_{limit}/{app}/ram_box.png", dpi=600)
+plt.savefig(f"./diagrams_{limit}_api36/ram_box.png", dpi=600)
 plt.close()

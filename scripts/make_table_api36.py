@@ -5,7 +5,7 @@ import scipy.stats as stats
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
 
 limit = 1000
-app = "tictactoe"
+app = "tetris"
 
 def read_trace_file(filename):
     cpu_usage = []
@@ -19,9 +19,9 @@ def read_trace_file(filename):
     return cpu_usage, ram_usage
 
 # Load data from the three trace files
-cpu_flutter, ram_flutter = read_trace_file(f"./data_{limit}/tacelog_{app}_flutter.txt")
-cpu_android, ram_android = read_trace_file(f"./data_{limit}/tacelog_{app}_android.txt")
-cpu_compose, ram_compose = read_trace_file(f"./data_{limit}/tacelog_{app}_compose.txt")
+cpu_flutter, ram_flutter = read_trace_file(f"./data_{limit}_api36/tacelog_{app}_flutter.txt")
+cpu_android, ram_android = read_trace_file(f"./data_{limit}_api36/tacelog_{app}_android.txt")
+cpu_compose, ram_compose = read_trace_file(f"./data_{limit}_api36/tacelog_{app}_compose.txt")
 
 # Combine data into single lists for ANOVA and Tukey HSD analysis
 cpu_data = cpu_flutter + cpu_android + cpu_compose
@@ -59,6 +59,6 @@ tukey_ram_results = pd.DataFrame(
 ).map(lambda x: f"{x:.4f}" if isinstance(x, (int, float)) else x)
 
 # Save data
-anova_results.to_csv(f"diagrams_{limit}/{app}/anova.txt", sep="\t", index=False)
-tukey_cpu_results.to_csv(f"diagrams_{limit}/{app}/tukey_cpu.txt", sep="\t", index=False)
-tukey_ram_results.to_csv(f"diagrams_{limit}/{app}/tukey_ram.txt", sep="\t", index=False)
+anova_results.to_csv(f"diagrams_{limit}_api36/anova.txt", sep="\t", index=False)
+tukey_cpu_results.to_csv(f"diagrams_{limit}_api36/tukey_cpu.txt", sep="\t", index=False)
+tukey_ram_results.to_csv(f"diagrams_{limit}_api36/tukey_ram.txt", sep="\t", index=False)
