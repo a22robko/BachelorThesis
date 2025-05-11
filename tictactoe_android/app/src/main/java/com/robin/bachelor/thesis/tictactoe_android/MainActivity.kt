@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
   private lateinit var imageViews: Array<Array<ImageView>>
   private lateinit var modeButton: Button
   private lateinit var currentPlayerText: TextView
+  private val boardCache = Array(3) { Array(3) { "" } }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -75,10 +76,14 @@ class MainActivity : AppCompatActivity() {
   private fun updateBoard() {
     imageViews.forEachIndexed { row, array ->
       array.forEachIndexed { col, imageView ->
-        when (game.board[row][col]) {
-          "X" -> imageView.setImageResource(R.drawable.x)
-          "O" -> imageView.setImageResource(R.drawable.o)
-          else -> imageView.setImageResource(android.R.color.transparent)
+        val value = game.board[row][col]
+        if (value != boardCache[row][col]) {
+          when (value) {
+            "X" -> imageView.setImageResource(R.drawable.x)
+            "O" -> imageView.setImageResource(R.drawable.o)
+            else -> imageView.setImageResource(android.R.color.transparent)
+          }
+          boardCache[row][col] = value
         }
       }
     }
@@ -95,6 +100,11 @@ class MainActivity : AppCompatActivity() {
   private fun resetGame() {
     game.resetGame()
     gameOver = false
+    for (i in 0..2) {
+      for (j in 0..2) {
+        boardCache[i][j] = ""
+      }
+    }
     updateBoard()
     updateCurrentPlayerText()
   }
@@ -103,5 +113,4 @@ class MainActivity : AppCompatActivity() {
     isAiMode = !isAiMode
     modeButton.text = if (isAiMode) getString(R.string.btn_switch_to_players) else getString(R.string.btn_switch_to_ai)
     resetGame()
-  }
-}
+  } }
